@@ -48,7 +48,7 @@ const register_user = async (req, res) => {
             email: req.body.email,
             password: spassword,
             phone: req.body.phone,
-            image: req.file.filename,
+            //image: req.file.filename,
             type: req.body.type,
         });
 
@@ -102,7 +102,7 @@ const user_login = async (req, res) => {
                     name: user_Data.name,
                     email: user_Data.email,
                     password: user_Data.password,
-                    // image: user_Data.image,
+                    image: user_Data.image,
                     phone: user_Data.phone,
                     type: user_Data.type,
                     token: tokenData,
