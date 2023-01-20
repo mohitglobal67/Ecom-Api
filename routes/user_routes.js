@@ -15,15 +15,14 @@ user_routes.use(express.static("public"));
 
 const user_controller = require('../controllers/user_controller')
 
-user_routes.use("/userimage", express.static("public/userimage"));
+user_routes.use("/userimage", express.static("public/userimages"));
 
 
 const auth = require('../middleware/auth')
 
 const storage = multer.diskStorage({
-    destination: "../public/usersimages",
-    filename: function (req, file, cb) {
-        cb(null, file.originalname);
+    destination: function (req, file, cb) {
+        cb(null, path.join(__dirname, '../public/userimages'));
     },
 
     filename: function (req, file, cb) {
