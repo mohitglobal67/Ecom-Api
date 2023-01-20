@@ -1,14 +1,15 @@
 
 const express = require("express");
+require('dotenv').config();
 
 
 const app = express();
 const mongoose = require('mongoose');
 
 
-
-
-mongoose.connect('mongodb+srv://mohitglobal67:mohit@sbs.jjk73yj.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true });
+const PORT = process.env.PORT || 3000;
+ 
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true });
 
 mongoose.connection.on('err', err => {
     console.log("connection failed");
@@ -48,7 +49,7 @@ app.use('/api', subCategory_routes);
 app.use('/api', product_routes);
 
 
-server.listen(3000, console.log(3000));
+server.listen(PORT, console.log(3000));
 
 
 

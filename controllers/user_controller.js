@@ -102,7 +102,7 @@ const user_login = async (req, res) => {
                     name: user_Data.name,
                     email: user_Data.email,
                     password: user_Data.password,
-                    image: user_Data.image,
+                    // image: user_Data.image,
                     phone: user_Data.phone,
                     type: user_Data.type,
                     token: tokenData,
