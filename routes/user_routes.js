@@ -13,6 +13,8 @@ user_routes.use(bodyparser.urlencoded({ extended: true }))
 
 user_routes.use(express.static("public"));
 
+const fileupload = require('express-fileupload');
+
 const user_controller = require('../controllers/user_controller')
 
 user_routes.use("/userimage", express.static("public/userimages"));
@@ -21,6 +23,10 @@ user_routes.use("/userimage", express.static("public/userimages"));
 const auth = require('../middleware/auth')
 
 user_routes.use(express.static(__dirname));
+
+user_routes.use(fileupload({
+    useTempFiles: true
+}))
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
