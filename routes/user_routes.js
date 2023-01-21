@@ -35,7 +35,13 @@ const storage = multer.diskStorage({
 
         if (!fs.existsSync('/var/task/routes/temp', fs.constants.W_OK)) {
 
-            fs.mkdirSync('/var/task/routes/temp', fs.constants.W_OK)
+            try {
+                fs.accessSync('/var/task/routes/temp', fs.constants.W_OK);
+                console.log('can write %s', path);
+            }
+            catch (err) {
+                console.log("%s doesn't exist", path);
+            }
         }
         cb(null, './var/task/routes/temp');
     },
