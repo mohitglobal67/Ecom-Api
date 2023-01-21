@@ -8,6 +8,8 @@ const path = require('path')
 
 user_routes.use(bodyparser.json());
 
+const fs = require('fs')
+
 user_routes.use(bodyparser.urlencoded({ extended: true }))
 
 
@@ -22,8 +24,7 @@ user_routes.use("/userimage", express.static("public/userimages"));
 
 const auth = require('../middleware/auth')
 
-user_routes.use(express.static(__dirname + '/temp'));
-
+user_routes.use(express.static(__dirname));
 
 // user_routes.use(fileupload({
 //     useTempFiles: true
@@ -31,6 +32,14 @@ user_routes.use(express.static(__dirname + '/temp'));
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
+
+        fs.access(path.join("public/userimages"), fs.constants.R_OK | fs.constants.W_OK, (err) => {
+            if (err) {
+                console.log("%s doesn't exist", path);
+            } else {
+                console.log('can read/write %s', path);
+            }
+        });
 
         cb(null, path.join("public/userimages"));
     },
