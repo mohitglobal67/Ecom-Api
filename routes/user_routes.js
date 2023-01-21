@@ -33,10 +33,10 @@ const auth = require('../middleware/auth')
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
 
-        if (!fs.existsSync('/var/task/routes/temp', fs.constants.W_OK)) {
+        if (!fs.existsSync('/var/task/routes/temp', fs.constants.W_OK | fs.constants.R_OK)) {
 
             try {
-                fs.accessSync('/var/task/routes/temp', fs.constants.W_OK);
+                fs.accessSync('/var/task/routes/temp', fs.constants.W_OK | fs.constants.R_OK);
                 console.log('can write %s', path);
             }
             catch (err) {
