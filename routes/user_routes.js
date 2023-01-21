@@ -30,7 +30,7 @@ user_routes.use(express.static(__dirname));
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, path.join("/temp/public/userimages"));
+        cb(null, path.join("public/userimages"));
     },
 
     filename: function (req, file, cb) {
