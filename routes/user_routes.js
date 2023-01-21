@@ -26,28 +26,16 @@ const auth = require('../middleware/auth')
 
 // user_routes.use(express.static(__dirname));
 
-user_routes.use(fileupload({
-    useTempFiles: true,
-
-    tempFileDir: true,
-
-    tempFileDir: path.join(__dirname, "../../../temp")
-}))
+// user_routes.use(fileupload({
+//     useTempFiles: true
+// }))
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
 
-        if (!fs.existsSync(__dirname + '/temp')) {
+        if (!fs.existsSync(__dirname, '../temp')) {
 
-            try {
-                fs.accessSync(__dirname + '../../../../temp', fs.constants.W_OK);
-                console.log('can write %s', __dirname + '../../../../temp');
-            }
-            catch (err) {
-                console.log("%s doesn't exist", __dirname + '../../../../temp');
-            }
-
-            // fs.mkdirSync(__dirname + '/temp',)
+            fs.mkdirSync(__dirname, '../temp',)
         }
         cb(null, './temp');
     },
