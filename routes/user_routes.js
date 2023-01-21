@@ -15,14 +15,16 @@ user_routes.use(express.static("public"));
 
 const fileupload = require('express-fileupload');
 
+const fs = require('fs');
+
 const user_controller = require('../controllers/user_controller')
 
-user_routes.use("/userimage", express.static("public/userimages"));
+//user_routes.use("/userimage", express.static("public/userimages"));
 
 
 const auth = require('../middleware/auth')
 
-user_routes.use(express.static(__dirname));
+// user_routes.use(express.static(__dirname));
 
 // user_routes.use(fileupload({
 //     useTempFiles: true
@@ -30,15 +32,18 @@ user_routes.use(express.static(__dirname));
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, path.join("public/userimages"));
+
+        if (!fs.existsSync(__dirname + '/temp')) {
+
+            fs.mkdirSync(__dirname + '/temp')
+        }
+        cb(null, './temp');
     },
 
     filename: function (req, file, cb) {
 
-        const name = Date.now() + ' - ' + file.originalname;
-        cb(null, name, function (error1, success1) {
-            if (error1) throw error1;
-        });
+        // const name = Date.now() + ' - ' + file.originalname;
+        cb(null, file.fieldname + '-' + Date.now() + '.' + file.mimetype.split('/')[1]);
     }
 });
 
