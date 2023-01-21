@@ -24,7 +24,7 @@ const user_controller = require('../controllers/user_controller')
 
 const auth = require('../middleware/auth')
 
-user_routes.use(express.static(path.join(__dirname, +'/temp')));
+user_routes.use(express.static(path.join(__dirname, '/temp')));
 
 // user_routes.use(fileupload({
 //     useTempFiles: true
