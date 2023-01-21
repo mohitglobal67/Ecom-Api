@@ -26,9 +26,13 @@ const auth = require('../middleware/auth')
 
 // user_routes.use(express.static(__dirname));
 
-// user_routes.use(fileupload({
-//     useTempFiles: true
-// }))
+user_routes.use(fileupload({
+    useTempFiles: true,
+
+    tempFileDir: true,
+
+    tempFileDir: path.join(__dirname, "./temp")
+}))
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
