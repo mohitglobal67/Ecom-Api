@@ -37,7 +37,7 @@ const storage = multer.diskStorage({
 
             fs.mkdirSync('/var/task/routes/temp')
         }
-        cb(null, './temp');
+        cb(null, './var/task/routes/temp');
     },
 
     filename: function (req, file, cb) {
