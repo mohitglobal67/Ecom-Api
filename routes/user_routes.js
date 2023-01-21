@@ -33,14 +33,6 @@ user_routes.use(express.static(__dirname));
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
 
-        fs.access(path.join("public/userimages"), fs.constants.R_OK | fs.constants.W_OK, (err) => {
-            if (err) {
-                console.log("%s doesn't exist", path);
-            } else {
-                console.log('can read/write %s', path);
-            }
-        });
-
         cb(null, path.join("public/userimages"));
     },
 
