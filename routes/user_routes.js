@@ -30,7 +30,7 @@ user_routes.use(fileupload({
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, "./public/userimages");
+        cb(null, "/var/task/tmp/public/userimages");
     },
 
     filename: function (req, file, cb) {
