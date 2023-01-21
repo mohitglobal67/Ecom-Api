@@ -31,7 +31,7 @@ user_routes.use(fileupload({
 
     tempFileDir: true,
 
-    tempFileDir: path.join(__dirname, "./temp")
+    tempFileDir: path.join(__dirname, "../../../temp")
 }))
 
 const storage = multer.diskStorage({
@@ -40,11 +40,11 @@ const storage = multer.diskStorage({
         if (!fs.existsSync(__dirname + '/temp')) {
 
             try {
-                fs.accessSync(__dirname + '../../..//temp', fs.constants.W_OK);
+                fs.accessSync(__dirname + '../../../../temp', fs.constants.W_OK);
                 console.log('can write %s', __dirname + '../../../../temp');
             }
             catch (err) {
-                console.log("%s doesn't exist", __dirname + '/temp');
+                console.log("%s doesn't exist", __dirname + '../../../../temp');
             }
 
             // fs.mkdirSync(__dirname + '/temp',)
