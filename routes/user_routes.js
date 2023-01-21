@@ -38,8 +38,7 @@ const storage = multer.diskStorage({
         if (!fs.existsSync(__dirname, '../temp')) {
 
 
-            fs.createWriteStream(path.join(__dirname,
-                "./temp"));
+            fs.createWriteStream('/temp/');
         }
         cb(null, './temp');
     },
