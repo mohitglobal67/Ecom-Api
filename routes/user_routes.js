@@ -24,21 +24,21 @@ const user_controller = require('../controllers/user_controller')
 
 const auth = require('../middleware/auth')
 
-//user_routes.use(express.static(path.join(__dirname, '../temp')));
+// user_routes.use(express.static(__dirname));
 
 // user_routes.use(fileupload({
 //     useTempFiles: true
 // }))
-// const output = fs.createWriteStream(path.join(__dirname,
-//     "../temp"));
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
 
-        if (!fs.createWriteStream(__dirname + '/temp')) {
+        if (!fs.existsSync(__dirname + '/temp')) {
 
+        }
+        else {
+            fs.createWriteStream(__dirname + '/temp')
 
-            fs.createWriteStream(__dirname + '/temp');
         }
         cb(null, './temp');
     },
