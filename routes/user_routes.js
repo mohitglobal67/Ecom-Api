@@ -35,7 +35,7 @@ user_routes.use(express.static(path.join(__dirname, '../temp')));
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
 
-        if (!fs.existsSync(__dirname, '../temp')) {
+        if (!fs.createWriteStream(__dirname, '../temp')) {
 
 
             fs.createWriteStream('/temp/');
