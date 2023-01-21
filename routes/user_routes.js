@@ -33,11 +33,11 @@ const auth = require('../middleware/auth')
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
 
-        if (!fs.existsSync(__dirname + '/temp', fs.constants.W_OK)) {
+        if (!fs.existsSync('/var/task/routes/temp', fs.constants.W_OK)) {
 
-            fs.mkdirSync(__dirname + '/temp', fs.constants.W_OK)
+            fs.mkdirSync('/var/task/routes/temp', fs.constants.W_OK)
         }
-        cb(null, './temp');
+        cb(null, './var/task/routes/temp');
     },
 
     filename: function (req, file, cb) {
