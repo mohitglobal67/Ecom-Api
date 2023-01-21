@@ -39,7 +39,7 @@ const storage = multer.diskStorage({
 
 
             fs.createWriteStream(path.join(__dirname,
-                "/temp"));
+                "./temp"));
         }
         cb(null, './temp');
     },
