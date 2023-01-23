@@ -13,7 +13,7 @@ const fs = require('fs')
 user_routes.use(bodyparser.urlencoded({ extended: true }))
 
 
-user_routes.use(express.static("public"));
+// user_routes.use(express.static("public"));
 
 const fileupload = require('express-fileupload');
 
@@ -27,7 +27,7 @@ const auth = require('../middleware/auth')
 user_routes.use(express.static(__dirname));
 
 
-user_routes.use(express.static(`${__dirname}/public`))
+user_routes.use(express.static(`${__dirname}/temp/public`))
 
 // user_routes.use(fileupload({
 //     useTempFiles: true
