@@ -27,7 +27,7 @@ const auth = require('../middleware/auth')
 user_routes.use(express.static(__dirname));
 
 
-user_routes.use(express.static(`${__dirname}/temp/public`))
+// user_routes.use(express.static(`${__dirname}/temp/public`))
 
 // user_routes.use(fileupload({
 //     useTempFiles: true
