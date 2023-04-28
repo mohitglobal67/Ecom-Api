@@ -13,7 +13,9 @@ const path = require("path");
 const Subcategory_controller = require('../controllers/subCategory_controller')
 
 
-subCategory_routes.post("/add-subCategory", Subcategory_controller.create_subCategory)
+subCategory_routes.post("/add-subCategory/:id", Subcategory_controller.create_subCategory)
 
+
+subCategory_routes.get("/add-subCategory", Subcategory_controller.categorybyid)
 
 module.exports = subCategory_routes;

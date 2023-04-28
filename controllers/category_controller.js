@@ -21,7 +21,7 @@ const addCategory = async (req, res) => {
             for (let i = 0; i < category_data.length; i++) {
 
 
-                if (category_data[i]['catgeory'].toLowerCase() === req.body.category.toLowerCase()) {
+                if (category_data[i]['catgeory'] === req.body.category.toLowerCase()) {
 
 
                     checking = true;

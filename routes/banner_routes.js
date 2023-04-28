@@ -13,7 +13,7 @@ banner_routes.use("/banner", express.static("public/banners"));
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, path.join(__dirname, '../public/banners'));
+        cb(null, path.join(__dirname, 'https://powerful-tweed-jacket-newt.cyclic.app/../public/banners'));
     },
 
     filename: function (req, file, cb) {
